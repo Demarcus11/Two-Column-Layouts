@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Two Columns with Nav</title>
+
+</head>
+
+<body>
+
+  <main>
+    <header class="primary-header">
+      <div>
+        <img class="logo" src="./images/logo.svg" alt="">
+      </div>
+
+      <nav>
+        <ul class="primary-navigation">
+          <div class="primary-navigation-list">
+            <li>Features</li>
+            <li>Company</li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">About</a></li>
+          </div>
+
+          <div class="primary-navigation-list">
+            <li><a class="link-transparent" href="#">Login</a></li>
+            <li><a class="link-outline" href="#">Register</a></li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="site-wrapper">
+      <div class="site-content">
+        <div>
+          <h1 class="site-title">Make remote work</h1>
+
+          <p class="site-text">
+            Get your team in sync, no matter your location. Streamline processes,
+            create team rituals, and watch productivity soar.
+          </p>
+
+          <a class="learn-more link-dark" href="#">Learn more</a>
+        </div>
+
+
+        <ul class="site-sponsers">
+          <li><img src="./images/client-databiz.svg" alt="Databiz"></li>
+          <li><img src="./images/client-audiophile.svg" alt="Audiophile"></li>
+          <li><img src="./images/client-meet.svg" alt="Meet"></li>
+          <li><img src="./images/client-maker.svg" alt="Maker"></li>
+        </ul>
+      </div>
+
+      <picture class="site-img">
+        <source media="(min-width: 60em)" srcset="./images/image-hero-desktop.png">
+        <img src="./images/image-hero-mobile.png" alt="" />
+      </picture>
+    </div>
+
+  </main>
+
+</body>
+
+</html>

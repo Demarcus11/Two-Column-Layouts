@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --white-200: hsl(0, 0%, 98%);
+  --gray-500: hsl(0, 0%, 41%);
+  --black-800: hsl(0, 0%, 8%);
+
+  --fs-base: 1.125rem;
+
+  --ff-primary: "Epilogue", sans-serif;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+/* CSS Reset */
+
+/* makes sure padding and borders are calculated in the size of an element */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing and force children to inherit the font of their parents by default */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* adds hanging punctuation when its the first or last character in text, currently not supported in Chrome as of 2024 */
+
+html {
+  hanging-punctuation: first last;
+}
+
+/* body should take at least the full height of the viewport */
+
+body {
+  min-height: 100svh; /* svh assumes theres a address bar open on mobile and prevents layout shift when it disappears */
+}
+
+/* responsive images/videos */
+
+img,
+video,
+svg,
+picture {
+  display: block; /* images/videos should be on their own line */
+  max-width: 100%; /* width of images and videos should be at most be 100% of their container */
+}
+
+/* Make long headings display evenly across multiple lines by default */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* Gets rid of text orphans and limits text line length by default */
+
+p {
+  max-inline-size: 75ch; /* similar to max-width except its a logical property, so it can adjust to different writing mode directions */
+  text-wrap: pretty;
+}
+
+/* eliminates scroll snap behavior when the user prefers reduced motion and adds some space above the section being scrolled to  */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem; /* personal peference on how much space (usually 3-5 rem) */
+  }
+}
+
+/* Layouts */
+
+.site-wrapper {
+  display: grid;
+}
+@media (min-width: 60em) {
+  .site-wrapper {
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
+    gap: 7rem;
+  }
+
+  .site-wrapper > :first-child {
+    grid-column: 2 / span 1;
+  }
+
+  .site-wrapper > :last-child {
+    grid-column: 3 / span 1;
+  }
+}
+
+/* General Styles */
+
+body {
+  background-color: var(--white-200);
+  color: var(--gray-500);
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-normal);
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+/* Header & Nav Styles */
+
+.primary-header {
+  display: flex;
+  align-items: start;
+  gap: 3.5rem;
+  padding: 2rem;
+}
+
+nav {
+  width: 100%;
+}
+
+.primary-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & .primary-navigation-list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+/* Site Styles */
+
+.site-content {
+  /* We have a grid system within the main two column grid so we can align the items within the grid blocks more presicely */
+  display: grid;
+  gap: 2rem;
+}
+
+.site-content > :first-child {
+  /* Align the .site-content first child to the middle of the first grid block */
+  align-self: center;
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.site-title {
+  font-size: 4rem;
+  font-weight: var(--fw-bold);
+  color: var(--black-800);
+}
+
+.site-text {
+  line-height: 1.8;
+}
+
+.site-sponsers {
+  /* Align the sponsers to the bottom of the first grid block  */
+  align-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-img {
+  width: 85%;
+}

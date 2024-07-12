@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  --red-400-opacity: 1;
+  --green-400-opacity: 1;
+  --blue-400-opacity: 1;
+  --blue-100-opacity: 1;
+  --blue-800-opacity: 1;
+
+  --red-400: hsla(0deg 100% 74% / var(--red-400-opacity));
+  --green-400: hsla(154deg 59% 51% / var(--green-400-opacity));
+  --blue-100: hsla(246deg 25% 77% / var(--blue-100-opacity));
+  --blue-400: hsla(248deg 32% 49% / var(--blue-400-opacity));
+  --blue-800: hsla(249deg 10% 26% / var(--blue-800-opacity));
+
+  --fs-base: 1rem;
+
+  --ff-primary: "Poppins", sans-serif;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
+/* CSS Reset */
+
+/* makes sure padding and borders are calculated in the size of an element */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing and force children to inherit the font of their parents by default */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* adds hanging punctuation when its the first or last character in text, currently not supported in Chrome as of 2024 */
+
+html {
+  hanging-punctuation: first last;
+}
+
+/* body should take at least the full height of the viewport */
+
+body {
+  min-height: 100svh; /* svh assumes theres a address bar open on mobile and prevents layout shift when it disappears */
+}
+
+/* responsive images/videos */
+
+img,
+video,
+svg,
+picture {
+  display: block; /* images/videos should be on their own line */
+  max-width: 100%; /* width of images and videos should be at most be 100% of their container */
+}
+
+/* Make long headings display evenly across multiple lines by default */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* Gets rid of text orphans and limits text line length by default */
+
+p {
+  max-inline-size: 75ch; /* similar to max-width except its a logical property, so it can adjust to different writing mode directions */
+  text-wrap: pretty;
+}
+
+/* eliminates scroll snap behavior when the user prefers reduced motion and adds some space above the section being scrolled to  */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem; /* personal peference on how much space (usually 3-5 rem) */
+  }
+}
+
+/* Loyout Styles */
+
+.signup-wrapper {
+  display: grid;
+  gap: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 45em) {
+  .signup-wrapper {
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
+    text-align: left;
+  }
+
+  /* Select first and last children of the .signup-wrapper */
+  .signup-wrapper > :first-child {
+    grid-column: 2 / span 1;
+    align-self: center;
+  }
+
+  .signup-wrapper > :last-child {
+    grid-column: 3 / span 1;
+  }
+}
+
+/* General Styles */
+
+body {
+  --mobile-padding-inline: 1.5rem;
+  --mobile-padding-block: 4rem;
+
+  font-family: var(--ff-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
+  color: #fff;
+  background-color: var(--red-400);
+  background-image: url("./images/bg-intro-mobile.png");
+  background-repeat: no-repeat;
+  padding: var(--mobile-padding-block) var(--mobile-padding-inline);
+}
+@media (min-width: 45em) {
+  body {
+    background-image: url("./images/bg-intro-desktop.png");
+  }
+}
+
+/* Signup Styles */
+
+.signup-title {
+  font-size: clamp(1.5rem, 7vw, 2.5rem);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 1rem;
+}
+@media (min-width: 45rem) {
+  .signup-title {
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+  }
+}
+
+.signup-form-alert {
+  background-color: var(--blue-400);
+  text-align: center;
+  padding: 1rem 4rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+
+  & strong {
+    font-weight: var(--fw-semibold);
+  }
+}
+
+.signup-form {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+
+  & .signup-form-input-wrapper {
+    position: relative;
+
+    & .error-icon {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translate(-50%, -65%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    & .signup-form-input {
+      width: 100%;
+      padding: 0.75rem 3.5rem 0.75rem 1rem;
+      border-radius: 5px;
+      border: 0;
+      outline: 1px solid var(--blue-800);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+
+      &::placeholder {
+        color: var(--blue-800);
+      }
+    }
+  }
+
+  & .signup-form-error {
+    color: var(--red-400);
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-left: auto;
+    max-width: fit-content;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  & .signup-form-submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    color: #fff;
+    border: 0;
+    background-color: var(--green-400);
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      --green-400-opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--green-400);
+      outline-offset: 4px;
+    }
+  }
+
+  & .signup-form-terms-and-service {
+    font-size: 0.7rem;
+    color: gray;
+    text-align: center;
+
+    & .signup-form-terms-and-service-link {
+      text-decoration: none;
+      color: var(--red-400);
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Utility classes */
+
+.signup-form .signup-form-input.input-error {
+  outline: 1px solid var(--red-400);
+
+  &::placeholder {
+    color: var(--red-400);
+  }
+}

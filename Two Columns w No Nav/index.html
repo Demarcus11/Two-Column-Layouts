@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="./script.js" defer></script>
+  <title>Signup Form</title>
+
+</head>
+
+<body>
+
+  <main class="signup-wrapper">
+    <div>
+      <h1 class="signup-title">
+        Learn to code by watching others
+      </h1>
+
+      <p class="signup-text">
+        See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
+        but understanding how developers think is invaluable.
+      </p>
+    </div>
+
+    <div>
+      <div class="signup-form-alert">
+        <strong>Try it free 7 days</strong> then $20/mo. thereafter
+      </div>
+
+      <form class="signup-form" data-signup-form>
+        <div class="signup-form-item">
+          <div class="signup-form-input-wrapper">
+            <img class="error-icon" src="./images/icon-error.svg" alt="" data-first-name-error-icon>
+            <input class="signup-form-input" type="text" placeholder="First Name" data-first-name>
+          </div>
+          <p class="signup-form-error" data-first-name-error></p>
+        </div>
+
+        <div class="signup-form-item">
+          <div class="signup-form-input-wrapper">
+            <img class="error-icon" src="./images/icon-error.svg" alt="" data-last-name-error-icon>
+            <input class="signup-form-input" type="text" placeholder="Last Name" data-last-name>
+          </div>
+          <p class="signup-form-error" data-last-name-error></p>
+        </div>
+
+        <div class="signup-form-item">
+          <div class="signup-form-input-wrapper">
+            <img class="error-icon" src="./images/icon-error.svg" alt="" data-email-error-icon>
+
+            <input class="signup-form-input" type="email" placeholder="Email" data-email>
+          </div>
+          <p class="signup-form-error" data-email-error></p>
+        </div>
+
+        <div class="signup-form-item">
+          <div class="signup-form-input-wrapper">
+            <img class="error-icon" src="./images/icon-error.svg" alt="" data-password-error-icon>
+
+            <input class="signup-form-input" type="text" placeholder="Password" data-password>
+          </div>
+          <p class="signup-form-error" data-password-error></p>
+        </div>
+
+        <div>
+          <button class="signup-form-submit-btn" type="submit">
+            Claim your free trial
+          </button>
+        </div>
+        <span class="signup-form-terms-and-service">
+          By clicking the button, you are agreeing to our <a class="signup-form-terms-and-service-link" href="#">Terms
+            and Services</a>
+        </span>
+      </form>
+    </div>
+  </main>
+
+
+</body>
+
+</html>
